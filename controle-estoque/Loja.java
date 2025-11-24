@@ -32,7 +32,7 @@ public class Loja{
                     qtd= removerProduto(produtos, qtd, nomeRemover);
                     break;
                 case 6: 
-                    atualizarPreco(produtos, qtd, nomeAtualizar, novoPreco);
+                    atualizarPreco(produtos, qtd);
                     break;
                 case 7:
                     listarPorCategoria(produtos, qtd);
@@ -188,8 +188,7 @@ public class Loja{
                 return;
             }
             System.out.printf("Digite o novo preço: ");
-            double novoPreco = input.nextDouble();             
-            p[indice].preco = novoPreco;
+            p[indice].preco = input.nextDouble();;
             System.out.println("Preço atualizado com sucesso.");
     }
 }
