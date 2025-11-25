@@ -191,6 +191,7 @@ public class Loja{
         for(int i = indice; i < qnt -1;i+=1){
             p[i] = p[i +1];
         }
+        System.out.printf("Produto %s excluído com sucesso.", nome);
         return qnt -1;
     }
     
