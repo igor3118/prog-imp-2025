@@ -138,16 +138,35 @@ public class Loja{
         }
     }
 
-    public static void listarPorCategoria(Produto[] p, int qnt){
+    public static void listarPorCategoria(Produto[] p, int qnt) {
         if (qnt == 0) {
             System.out.println("Nenhum produto cadastrado.");
             return;
         }
-        for(int i =0; i < qnt;i+=1){
-            System.out.printf("Categoria: %s\n",p[i].categoria);
-            imprimirPorCategoria(p, qnt, p[i].categoria);
-            System.out.printf("Subtotal: %.2f\n",subtotalCategoria(p, qnt, p[i].categoria));
-            System.out.println("----------------------------");
+
+        String[] categoriasListadas = new String[qnt];
+        int qtdCat = 0;
+
+        for(int i = 0; i < qnt; i++) {
+
+            boolean jaExiste = false;
+
+            for(int j = 0; j < qtdCat; j++) {
+                if (categoriasListadas[j].equalsIgnoreCase(p[i].categoria)) {
+                    jaExiste = true;
+                    break;
+                }
+            }
+
+            if (!jaExiste) {
+                categoriasListadas[qtdCat] = p[i].categoria;
+                qtdCat++;
+
+                System.out.printf("Categoria: %s\n", p[i].categoria);
+                imprimirPorCategoria(p, qnt, p[i].categoria);
+                System.out.printf("Subtotal: %.2f\n", subtotalCategoria(p, qnt, p[i].categoria));
+                System.out.println("----------------------------");
+            }
         }
     }
 
